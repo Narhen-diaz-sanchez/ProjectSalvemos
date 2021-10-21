@@ -1,0 +1,4 @@
+/salvemosvenv/
+/Salvemos/secret.json
+*__pycache__/
+*migrations/

@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;1,400&display=swap');
+
+:root{
+    --titulos:3rem;
+    --subtitulos:2.3rem;
+    --textos:1.5rem;
+    --login-columns:  repeat(8,1fr);
+    --login-rows: 1fr;
+    --color1: rgb(0, 161, 157);
+    --color2: rgb(255, 255, 255);
+}
+
+body{
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    max-height: 100vh;
+}
+
+/* header */
+
+header {
+    width: 100%;
+}
+
+nav {
+    width: 100%;
+    position: fixed;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
+}
+
+.nav1 {
+    background: var(--color1);
+    height: 80px;
+    color: white;
+}
+
+.contenedor-nav {
+    display: flex;
+    margin: auto;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    /* max-width: 1000px; */
+    height: inherit;
+    overflow: hidden;
+}
+
+nav .enlaces a {
+    display: inline-block;
+    padding: 5px 0;
+    margin-right: 17px;
+    font-size: 17px;
+    font-weight: 300;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    color: inherit
+}
+
+nav .enlaces a:hover {
+    border-bottom: 3px solid #0CEEE6;
+    transition: 0.6s;
+}
+
+.logo,
+.logo img {
+    height: 70px;
+}
+
+.icono {
+    display: none;
+    font-size: 24px;
+    padding: 23.5px 20px;
+}
+
+
+/* section del feed */
+
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 100px;
+    overflow: hidden;
+}
+
+.feed__grid{
+    padding: 50px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px;
+    grid-auto-rows: 400px;
+}
+
+.feed__item{
+    background: #f2f2f2;
+    margin: 0;
+    border-radius: 10px;
+}
+
+.feed__figure{
+    margin: 0;
+}
+
+.feed__img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.feed__texts{
+    margin: 0;
+    padding-left: 20px;
+}
+
+.feed__title{
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.feed__paragraph{
+    margin: 0;
+    overflow: hidden;
+    max-height: 120px;
+}
+
+.cta{
+    display: inline-block;
+    background: var(--color1);
+    padding: 10px 30px;
+    margin-top: 1em;
+    text-decoration: none;
+    color: #fff;
+    margin-top: 5px;
+    margin-left: 20px;
+    border-radius: 10px;
+}
+
+.cta:hover{
+    background: rgb(17, 128, 126);
+}

@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style-feed.css' %}">
+</head>
+<body>
+    <header>
+        <nav id="nav" class="nav1">
+            <div class="contenedor-nav">
+                <div class="logo">
+                    <img src="{% static 'icons/004-pawprint.png' %}" alt="">
+                </div>
+                <div class="enlaces" id="enlaces">
+                    <a href="new_post.html" id="enlace-publicar" class="btn-header">Publicar</a>
+                    <a href="#" id="enlace-mi_cuenta" class="btn-header">Mi cuenta</a>
+                    <a href="{% url 'Users_app:user-logout' %}" id="enlace-salir" class="btn-header">Salir</a>
+                </div>
+                <!-- <div class="icono" id="open">
+                    <span>&#9776;</span>
+                </div> -->
+            </div>
+        </nav>
+    </header>
+    <section class="feed container">
+
+        <div class="feed__grid">
+
+            <div class="feed__item">
+                <figure class="feed__figure">
+                    <img src="{% static 'img/mascota3.jpg' %}" class="feed__img">
+                </figure>
+                <div class="feed__texts">
+                    <h2 class="feed__title">Firulais</h2>
+                    <p class="feed__paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam, natus iure saepe ut corporis quas possimus beatae blanditiis maxime, earume, earum voluptas commodi non, molestias sequi!</p>
+                </div>
+                <a href="#" class="cta">Ver más</a>
+            </div>
+
+            <div class="feed__item">
+                <figure class="feed__figure">
+                    <img src="{% static 'img/mascota3.jpg' %}" class="feed__img">
+                </figure>
+                <div class="feed__texts">
+                    <h2 class="feed__title">Firulais</h2>
+                    <p class="feed__paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam, natus iure saepe ut corporis quas possimus beatae blanditiis maxime, earume, earum voluptas commodi non, molestias sequi!</p>
+                </div>
+                <a href="#" class="cta">Ver más</a>
+            </div>
+
+            <div class="feed__item">
+                <figure class="feed__figure">
+                    <img src="{% static 'img/mascota3.jpg' %}" class="feed__img">
+                </figure>
+                <div class="feed__texts">
+                    <h2 class="feed__title">Firulais</h2>
+                    <p class="feed__paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam, natus iure saepe ut corporis quas possimus beatae blanditiis maxime, earume, earum voluptas commodi non, molestias sequi!</p>
+                </div>
+                <a href="#" class="cta">Ver más</a>
+            </div>
+
+            <div class="feed__item">
+                <figure class="feed__figure">
+                    <img src="{% static 'img/mascota3.jpg' %}" class="feed__img">
+                </figure>
+                <div class="feed__texts">
+                    <h2 class="feed__title">Firulais</h2>
+                    <p class="feed__paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam, natus iure saepe ut corporis quas possimus beatae blanditiis maxime, earume, earum voluptas commodi non, molestias sequi!</p>
+                </div>
+                <a href="#" class="cta">Ver más</a>
+            </div>
+
+            <div class="feed__item">
+                <figure class="feed__figure">
+                    <img src="{% static 'img/mascota3.jpg' %}" class="feed__img">
+                </figure>
+                <div class="feed__texts">
+                    <h2 class="feed__title">Firulais</h2>
+                    <p class="feed__paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam, natus iure saepe ut corporis quas possimus beatae blanditiis maxime, earume, earum voluptas commodi non, molestias sequi!</p>
+                </div>
+                <a href="#" class="cta">Ver más</a>
+            </div>  
+
+            <div class="feed__item">
+                <figure class="feed__figure">
+                    <img src="{% static 'img/mascota3.jpg' %}" class="feed__img">
+                </figure>
+                <div class="feed__texts">
+                    <h2 class="feed__title">Firulais</h2>
+                    <p class="feed__paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam, natus iure saepe ut corporis quas possimus beatae blanditiis maxime, earume, earum voluptas commodi non, molestias sequi!</p>
+                </div>
+                <a href="#" class="cta">Ver más</a>
+            </div>
+
+            <div class="feed__item">
+                <figure class="feed__figure">
+                    <img src="{% static 'img/mascota3.jpg' %}" class="feed__img">
+                </figure>
+                <div class="feed__texts">
+                    <h2 class="feed__title">Firulais</h2>
+                    <p class="feed__paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam, natus iure saepe ut corporis quas possimus beatae blanditiis maxime, earume, earum voluptas commodi non, molestias sequi!</p>
+                </div>
+                <a href="#" class="cta">Ver más</a>
+            </div>
+
+            <div class="feed__item">
+                <figure class="feed__figure">
+                    <img src="{% static 'img/mascota3.jpg' %}" class="feed__img">
+                </figure>
+                <div class="feed__texts">
+                    <h2 class="feed__title">Firulais</h2>
+                    <p class="feed__paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam, natus iure saepe ut corporis quas possimus beatae blanditiis maxime, earume, earum voluptas commodi non, molestias sequi!</p>
+                </div>
+                <a href="#" class="cta">Ver más</a>
+            </div>
+            
+
+            
+
+        </div>
+    </section>
+</body>
+</html>

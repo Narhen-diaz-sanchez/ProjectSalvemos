@@ -1,0 +1,9 @@
+1. Tener instalado python, abrir la terminal en la carpeta donde se va a realizar el proyecto, y ejecutar "py -m venv "nombre del entorno virtual"", luego se crea la carpeta con el entorno virtual
+
+2.En cmd entrar a la carpeta del entorno virtual luego a la carpeta scripts y ejecutar el comando "activate" para activar el entorno virtual.
+
+3. volver a la raiz del proyecto y entrar a la carpeta requirement y ejecutar "pip install -r local.txt" que es donde se encuentran los requerimientos para ejecutar el proyecto.(actualizar el pip de ser necesario con "py -m pip install --upgrade pip")
+
+--4. Para crear el proyecto salimos de requirements y entramos en la carpeta donde va el proyecto, se ejecuta django-admin tartproject "nombre del proyecto"
+
+--5. Para la base de datos debe estar instalado postgresql, entramos a la shell de postgre y para crear la BD se usa "CREATE DATABASE 'nombre de la BD';", se le debe asignar un usuario(se puede crear o asignar uno creado) en caso de crear es "CREATE USER 'nombre_usuario;'" luego se debe acceder a la BD creada y poder dar los permisos al usuario, para acceder a la BD es "\c 'nombre de la BD';" y para dar permisos al usuario es "ALTER ROLE 'nombre de usuario' WITH PASSWORD 'una contraseña';"(la contraseña debe ir entre apostrofes '')
