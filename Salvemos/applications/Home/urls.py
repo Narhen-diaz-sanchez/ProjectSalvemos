@@ -11,4 +11,9 @@ urlpatterns = [
         views.HomePageView.as_view(),
         name='index',
     ),
+    path(
+        'contactanos/',
+        views.ContactView.as_view(),
+        name='contactanos',
+    ),
 ]

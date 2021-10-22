@@ -93,7 +93,8 @@
                     <div class="caja-servicios">
                         <img src="{% static 'icons/002-pet-house.png' %}" alt="">
                         <h4>Apadrina</h4>
-                        <p>Si no tienes espacio en tu <br> casa no te preocupes <br> apadrina una mascota y <br> nosotros nos encargarmos del resto</p>
+                        <p>Si no tienes espacio en tu <br> casa no te preocupes <br> apadrina una mascota y <br>
+                            nosotros nos encargarmos del resto</p>
                     </div>
                     <div class="caja-servicios">
                         <img src="{% static 'icons/003-happy.png' %}" alt="">
@@ -115,78 +116,41 @@
                 </ul>
             </div>
             <div class="galeria-work">
+
+                {% for post in post_adoptar %}
                 <div class="cont-work adoptar">
                     <div class="img-work">
-                        <img src="{% static 'img/mascota4.jpg' %}" alt="" width=30%>
+                        <img src="{{ post.image.url }}" alt="" width=30%>
                     </div>
                     <div class="textos-work">
-                        <h4>Adoptar</h4>
+                        <h4><a href="#">{{post.resume}}</a></h4>
                     </div>
                 </div>
-                <div class="cont-work adoptar">
-                    <div class="img-work">
-                        <img src="{% static 'img/mascota4.jpg' %}" alt="" width=30%>
-                    </div>
-                    <div class="textos-work">
-                        <h4>Adoptar2</h4>
-                    </div>
-                </div>
-                <div class="cont-work adoptar">
-                    <div class="img-work">
-                        <img src="{% static 'img/mascota4.jpg' %}" alt="" width=30%>
-                    </div>
-                    <div class="textos-work">
-                        <h4>Adoptar3</h4>
-                    </div>
-                </div>
+                {% endfor %}
+
+                {% for post in post_apadrinar %}
                 <div class="cont-work apadrinar">
                     <div class="img-work">
-                        <img src="{% static 'img/mascota5.jpg' %}" alt="" width=30%>
+                        <img src="{{ post.image.url }}" alt="" width=30%>
                     </div>
                     <div class="textos-work">
-                        <h4>Apadrinar</h4>
+                        <h4><a href="#">{{post.resume}}</a></h4>
                     </div>
                 </div>
-                <div class="cont-work apadrinar">
-                    <div class="img-work">
-                        <img src="{% static 'img/mascota5.jpg' %}" alt="" width=30%>
-                    </div>
-                    <div class="textos-work">
-                        <h4>Apadrinar2</h4>
-                    </div>
-                </div>
-                <div class="cont-work apadrinar">
-                    <div class="img-work">
-                        <img src="{% static 'img/mascota5.jpg' %}" alt="" width=30%>
-                    </div>
-                    <div class="textos-work">
-                        <h4>Apadrinar3</h4>
-                    </div>
-                </div>
+                {% endfor %}
+
+
+                {% for post in post_donar %}
                 <div class="cont-work donar">
                     <div class="img-work">
-                        <img src="{% static 'img/mascota6.jpg' %}" alt="" width=30%>
+                        <img src="{{ post.image.url }}" alt="" width=30%>
                     </div>
                     <div class="textos-work">
-                        <h4>Donar</h4>
+                        <h4><a href="#">{{post.resume}}</a></h4>
                     </div>
                 </div>
-                <div class="cont-work donar">
-                    <div class="img-work">
-                        <img src="{% static 'img/mascota6.jpg' %}" alt="" width=30%>
-                    </div>
-                    <div class="textos-work">
-                        <h4>Donar</h4>
-                    </div>
-                </div>
-                <div class="cont-work donar">
-                    <div class="img-work">
-                        <img src="{% static 'img/mascota6.jpg' %}" alt="" width=30%>
-                    </div>
-                    <div class="textos-work">
-                        <h4>Donar</h4>
-                    </div>
-                </div>
+                {% endfor %}
+
             </div>
         </section>
     </main>
@@ -201,10 +165,10 @@
                 <a href="#" class="footer__icon fab fa-twitter"></a>
                 <a href="#" class="footer__icon fab fa-instagram"></a>
             </div>
-            
+
             <div class="footer__nav">
-                <p class="footer__text">Ó dejanos un <a href="contacto.html" class="footer__link">mensaje</a></p>
-                
+                <p class="footer__text">Ó dejanos un <a href="{% url 'Home_app:contactanos' %}" class="footer__link">mensaje</a></p>
+
             </div>
 
             <p class="footer__copy">Derechos reservados &copy; Salvemos</p>
