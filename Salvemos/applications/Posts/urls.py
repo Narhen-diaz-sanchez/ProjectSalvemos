@@ -15,4 +15,9 @@ urlpatterns = [
         views.PostsDetailView.as_view(),
         name='Posts-detail',
     ),
+    path(
+        'NewPost/',
+        views.NewPost.as_view(),
+        name='NewPost',
+    ),
 ]

@@ -17,7 +17,7 @@
                     <img src="{% static 'icons/004-pawprint.png' %}" alt="">
                 </div>
                 <div class="enlaces" id="enlaces">
-                    <a href="new_post.html" id="enlace-publicar" class="btn-header">Publicar</a>
+                    <a href="{% url 'Posts_app:NewPost' %}" id="enlace-publicar" class="btn-header">Publicar</a>
                     <a href="#" id="enlace-mi_cuenta" class="btn-header">Mi cuenta</a>
                     <a href="{% url 'Users_app:user-logout' %}" id="enlace-salir" class="btn-header">Salir</a>
                 </div>
@@ -52,7 +52,7 @@
                 <div class="feed__texts">
                     <h2 class="feed__title">{{post.title}}</h2>
                     <p class="feed__paragraph">{{post.resume | truncatechars:40}}</p>
-                    <p class="feed__paragraph">{{post.content | truncatechars:40}}</p>
+                    <p class="feed__paragraph">{{post.content | truncatechars:40 | safe}}</p>
                 </div>
                 <a href="#" class="cta">Ver más</a>
             </div>
