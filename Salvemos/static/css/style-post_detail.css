@@ -4,8 +4,6 @@
   --titulos: 3rem;
   --subtitulos: 2.3rem;
   --textos: 1.5rem;
-  --login-columns: repeat(8, 1fr);
-  --login-rows: 1fr;
   --color1: rgb(0, 161, 157);
   --color2: rgb(255, 255, 255);
   --colorf2: rgb(146, 167, 54);
@@ -19,8 +17,6 @@ body {
   margin: 0;
   max-height: 100vh;
 }
-
-/* header */
 
 header {
   width: 100%;
@@ -76,125 +72,124 @@ nav .enlaces a:hover {
   padding: 23.5px 20px;
 }
 
-/* section del feed */
-
 .container {
-  width: 100%;
+  width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 100px;
+  padding: 150px 20px 0px 20px;
   overflow: hidden;
 }
 
-.feed__grid {
-  padding: 50px 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  row-gap: 50px;
-  column-gap: 20px;
-  grid-auto-rows: 400px;
-  margin-left: 10px;
-  margin-right: 10px;
+.nav {
+  background: steelblue;
+  height: var(--heigth-nav);
+  color: white;
 }
 
-.feed__item {
-  background: #f2f2f2;
-  margin: 0;
-  border-radius: 10px;
-  overflow: hidden;
+.nav__container {
+  height: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__link {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1em;
+}
+
+.detail__aside{
+    text-align: center;
+}
+
+.detail__main {
+  display: flex;
+  height: calc(100vh - var(--heigth-nav));
   align-items: flex-start;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  min-height: 600px;
 }
 
-.feed__figure {
-  width: 100%;
+.detail__texts {
+  flex: 1;
+  justify-content: space-around;
+  text-align: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
-.feed__img {
+.detail__picture {
+align-items: center;
+  flex: 1;
+}
+
+.detail__img {
   width: 100%;
-  height: 200px;
-  border-radius: 10px 10px 0 0;
+  max-width: 450px;
   display: block;
   margin: 0 auto;
-  background-position: center;
-  background: local;
-  background-size: cover;
-  object-fit: cover;
+  border-radius: 25px;
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.39);
 }
 
-.feed__texts {
-  margin: 0;
-  padding-left: 20px;
-  width: 100%;
-  text-align: center;
+.detail__title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 40px;
 }
-
-.feed__title {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 400;
-}
-
-.feed__paragraph {
-  margin: 0;
-  overflow: hidden;
-  max-height: 120px;
+.detail__paragraph{
+    margin-bottom: 20px;
+    /* font-size: 2rem; */
 }
 
 .cta {
+  background: steelblue;
   display: inline-block;
-  background: var(--color1);
-  padding: 10px 30px;
+  padding: 15px 30px;
+  margin-top: 1.5em;
   text-decoration: none;
-  color: #fff;
-  border-radius: 10px;
-  margin-top: auto;
-  margin-left: 30%;
-  justify-self: center;
-  margin-bottom: 1em;
-}
-
-.cta:hover {
-  background: rgb(17, 128, 126);
-}
-
-/* paginacion */
-
-.listpagetitle {
-  /* margin-bottom: 30px; */
-  margin-left: 50px;
-}
-
-ul.pagination {
-  display: inline-block;
-  padding: 0;
-  /* margin: 0; */
-  margin-bottom: 30px;
-  margin-left: 50px;
-}
-
-ul.pagination li {
-  display: inline;
-}
-
-ul.pagination li a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-ul.pagination li a.active {
-  background: rgb(17, 128, 126);
+  border-radius: 6px;
   color: white;
-  border-radius: 5px;
 }
 
-ul.pagination li a:hover:not(.active) {
-  background-color: #ddd;
+@media screen and (max-width: 800px) {
+  :root {
+    --height-nav: 100px;
+  }
+
+  .nav__container {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .detail__main {
+    flex-direction: column;
+    padding: 40px 0;
+  }
+
+  .detail__picture {
+    order: -1;
+  }
+
+  .detail__img {
+    min-width: 380px;
+  }
+
+  .detail__texts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .detail__title {
+    font-size: 2.5rem;
+    
+  }
+
+  .detail__paragraph {
+    font-size: 1rem;
+  }
 }
 
 /* footer */
@@ -284,3 +279,4 @@ footer {
 .footer__copy {
   text-shadow: var(--txt-shadow);
 }
+

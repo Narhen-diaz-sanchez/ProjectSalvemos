@@ -6,7 +6,7 @@ from django.contrib.auth.models import (
 )
 from model_utils.models import TimeStampedModel
 #
-from .managers import UserManager
+from .managers import UserManager, FavoritesManager
 from applications.Posts.models import Posts
 # Create your models here.
 
@@ -63,7 +63,7 @@ class Favorites(TimeStampedModel):
         related_name='posts_favorites',
         on_delete=models.CASCADE,
     )
-    #objects = FavoritesManager()
+    objects = FavoritesManager()
 
     class Meta:
         unique_together = ('user', 'post')

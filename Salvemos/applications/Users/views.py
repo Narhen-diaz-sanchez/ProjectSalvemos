@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 
 from django.views.generic import (
     View,
-    CreateView
+    ListView
 )
 
 from django.views.generic.edit import (
@@ -21,7 +21,7 @@ from .forms import (
     UpdatePasswordForm,
 )
 #
-from .models import User
+from .models import User, Favorites
 #
 
 
@@ -90,3 +90,12 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
 
         logout(self.request)
         return super(UpdatePasswordView, self).form_valid(form)
+
+
+class UserPageListView(LoginRequiredMixin, ListView):
+    template_name = "Users/profile.html"
+    context_object_name = 'profile'
+    login_url = reverse_lazy('Users_app:user-login')
+    
+    def get_queryset(self):
+        return Favorites.objects.posts_user(self.request.user)

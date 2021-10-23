@@ -22,3 +22,10 @@ class UserManager(BaseUserManager, models.Manager):
 
     def create_superuser(self, email, password=None, **extra_fields):
         return self._create_user(email, password, True, True, True, **extra_fields)
+
+class FavoritesManager(models.Manager):
+    def posts_user(self, usuario):
+        return self.filter(
+            post__public = True,
+            user = usuario
+        ).order_by('-created')

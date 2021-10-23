@@ -15,7 +15,8 @@ class PostsListView(LoginRequiredMixin, ListView):
     """Vista para mostrar los posts en el feed"""
     template_name = "Posts/feed.html"
     context_object_name = 'Posts'
-    paginated_by = 10
+    paginate_by = 8
+    ordering = 'title'
     login_url = reverse_lazy('Users_app:user-login')
     
     def get_context_data(self, **kwargs):
@@ -34,9 +35,10 @@ class PostsListView(LoginRequiredMixin, ListView):
 
 
 
-class PostsDetailView(DetailView):
+class PostsDetailView(LoginRequiredMixin, DetailView):
     model = Posts
-    template_name = "Posts/detail.html"
+    template_name = "Posts/post_detail.html"
+    login_url = reverse_lazy('Users_app:user-login')
 
 
 class NewPost(LoginRequiredMixin, FormView):

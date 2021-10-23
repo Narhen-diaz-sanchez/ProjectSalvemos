@@ -1,0 +1,18 @@
+{% extends "Posts/base_posts.html" %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style-post_detail.css' %}">
+<script src="https://kit.fontawesome.com/b814c54e34.js" crossorigin="anonymous"></script>
+{% endblock css %}
+
+{% block title %}
+Nuevo Post
+{% endblock title %}
+
+{% block content %}
+{% include 'includes/header_posts.html' %}
+
+{% include 'includes/footer.html' %}
+{% endblock content %}

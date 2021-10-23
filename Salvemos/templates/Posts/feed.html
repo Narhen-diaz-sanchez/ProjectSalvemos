@@ -1,68 +1,78 @@
+{% extends "Posts/base_posts.html" %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feed</title>
-    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style-feed.css' %}">
-</head>
-<body>
-    <header>
-        <nav id="nav" class="nav1">
-            <div class="contenedor-nav">
-                <div class="logo">
-                    <img src="{% static 'icons/004-pawprint.png' %}" alt="">
-                </div>
-                <div class="enlaces" id="enlaces">
-                    <a href="{% url 'Posts_app:NewPost' %}" id="enlace-publicar" class="btn-header">Publicar</a>
-                    <a href="#" id="enlace-mi_cuenta" class="btn-header">Mi cuenta</a>
-                    <a href="{% url 'Users_app:user-logout' %}" id="enlace-salir" class="btn-header">Salir</a>
-                </div>
-                <!-- <div class="icono" id="open">
-                    <span>&#9776;</span>
-                </div> -->
-            </div>
-        </nav>
-    </header>
-    <section class="feed container">
-        <div class="enlaces" style="display: inline-block;">
-            <form method="get">{% csrf_token %}
-                <input type="text" name="kword" id="kword" placeholder="Busca un post">
-                <div>
-                    <button type="submit" class="cta">Buscar</button>
-                </div>
-            </form>
-            
-            {% for categoria in categorias %}
-                <a href="?categoria={{categoria.name}}">{{categoria.name}}</a>
-            {% endfor %}
-                
-        </div>
 
-        <div class="feed__grid">
-            
-            {% for post in Posts %}
-            <div class="feed__item">
-                <div class="feed__figure">
-                    <img src="{{post.image.url}}" class="feed__img">
-                </div>
-                <div class="feed__texts">
-                    <h2 class="feed__title">{{post.title}}</h2>
-                    <p class="feed__paragraph">{{post.resume | truncatechars:40}}</p>
-                    <p class="feed__paragraph">{{post.content | truncatechars:40 | safe}}</p>
-                </div>
-                <a href="#" class="cta">Ver más</a>
-            </div>
-            {% empty %}
-            <h3>Sin resultados</h3>
-            {% endfor %}
-                
-            
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style-feed.css' %}">
+<script src="https://kit.fontawesome.com/b814c54e34.js" crossorigin="anonymous"></script>
+{% endblock css %}
 
+{% block title %}
+Mascotas
+{% endblock title %}
+
+{% block content %}
+{% include 'includes/header_posts.html' %}
+<section class="feed container">
+    <div class="enlaces" style="display: inline-block;">
+        <form method="get">{% csrf_token %}
+            <input type="text" name="kword" id="kword" placeholder="Busca un post">
+            <div>
+                <button type="submit" class="cta">Buscar</button>
+            </div>
+        </form>
+
+        {% for categoria in categorias %}
+        <a href="?categoria={{categoria.name}}">{{categoria.name}}</a>
+        {% endfor %}
+
+    </div>
+
+    <div class="feed__grid">
+
+        {% for post in Posts %}
+        <div class="feed__item">
+            <div class="feed__figure">
+                <img src="{{post.image.url}}" class="feed__img">
+            </div>
+            <div class="feed__texts">
+                <h2 class="feed__title">{{post.title}}</h2>
+                <p class="feed__paragraph">{{post.resume | truncatechars:40}}</p>
+                <p class="feed__paragraph">{{post.content | truncatechars:100 | safe}}</p>
+            </div>
+            <a href="{% url 'Posts_app:Post-detail' post.id %}" class="cta">Ver más</a>
         </div>
-    </section>
-</body>
-</html>
+        {% empty %}
+        <h3>Sin resultados</h3>
+        {% endfor %}
+    </div>
+
+
+    {% if is_paginated %}
+    </div>
+    <h2 class="listpagetitle">Página</h2>
+    <ul class="pagination">
+
+        {% if page_obj.has_previous %}
+        <li><a href="?page={{page_obj.previous_page_number}}">«</a></li>
+        {% endif %}
+
+        {% for pagina in paginator.page_range %}
+
+        {% ifequal pagina page_obj.number  %}
+        <li><a class="active" href="#">{{pagina}}</a></li>
+        {% else %}
+        <li><a href="?page={{pagina}}">{{pagina}}</a></li>
+        {% endifequal %}
+
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <li><a href="?page={{page_obj.next_page_number}}">»</a></li>
+        {% endif %}
+    </ul>
+    </div>
+    {% endif %}
+</section>
+{% include 'includes/footer.html' %}
+{% endblock content %}

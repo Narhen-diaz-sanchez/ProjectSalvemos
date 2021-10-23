@@ -17,7 +17,18 @@
             <h2 class="contact__title">Contáctanos</h2>
             
             {{form.as_p}}
-            <button type="submit" class="contact__cta">Enviar</button>
+            <div class="button">
+                <button type="submit" class="contact__cta">Enviar</button>
+                
+                {% if not user.is_anonymous %}
+                <a href="{% url 'Posts_app:Posts-lista' %}">Inicio</a>
+                {% else %}
+                <a href="{% url 'Home_app:index' %}">Inicio</a>
+                {% endif %}
+                    
+                
+            </div>
+            
         </form>
 
     </section>
