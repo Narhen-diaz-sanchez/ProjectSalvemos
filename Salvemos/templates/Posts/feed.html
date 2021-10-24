@@ -14,17 +14,18 @@ Mascotas
 {% block content %}
 {% include 'includes/header_posts.html' %}
 <section class="feed container">
-    <div class="enlaces" style="display: inline-block;">
-        <form method="get">{% csrf_token %}
-            <input type="text" name="kword" id="kword" placeholder="Busca un post">
-            <div>
-                <button type="submit" class="cta">Buscar</button>
-            </div>
-        </form>
+    <div class="buscador">
 
+        <form method="get" enctype="">{% csrf_token %}
+            <input type="text" name="kword" id="kword" placeholder="Busca un post">
+            <button type="submit" class="cta cta2">Buscar</button>
+        <div class="buscador">
+        <h2>Filtra por categoria</h2>
         {% for categoria in categorias %}
-        <a href="?categoria={{categoria.name}}">{{categoria.name}}</a>
-        {% endfor %}
+            <a class href="?categoria={{categoria.name}}">{{categoria.name}}</a>
+            {% endfor %}
+        </form>
+        </div>
 
     </div>
 

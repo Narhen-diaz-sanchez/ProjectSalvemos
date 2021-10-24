@@ -160,6 +160,15 @@ nav .enlaces a:hover {
   background: rgb(17, 128, 126);
 }
 
+.buscador{
+  display: inline-block;
+  width:400px; 
+}
+
+.cta2{
+  margin-left: 30px;
+}
+
 /* paginacion */
 
 .listpagetitle {
