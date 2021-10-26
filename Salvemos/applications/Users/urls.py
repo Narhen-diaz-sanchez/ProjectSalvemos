@@ -31,4 +31,9 @@ urlpatterns = [
         views.UserPageListView.as_view(),
         name='user-profile',
     ),
+    path(
+        'addfavorito/<pk>/',
+        views.addfavoritosView.as_view(),
+        name='addfavorito',
+    ),
 ]

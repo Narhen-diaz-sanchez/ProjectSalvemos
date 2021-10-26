@@ -22,6 +22,7 @@ from .forms import (
 )
 #
 from .models import User, Favorites
+from applications.Posts.models import Posts
 #
 
 
@@ -69,7 +70,7 @@ class LogoutView(View):
             )
         )
 
-
+#TODO falta hacer la vista para actualizar la contraseña
 class UpdatePasswordView(LoginRequiredMixin, FormView):
     template_name = 'users/update.html'
     form_class = UpdatePasswordForm
@@ -94,8 +95,22 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
 
 class UserPageListView(LoginRequiredMixin, ListView):
     template_name = "Users/profile.html"
-    context_object_name = 'profile'
+    context_object_name = 'profileuser'
     login_url = reverse_lazy('Users_app:user-login')
     
     def get_queryset(self):
         return Favorites.objects.posts_user(self.request.user)
+
+class addfavoritosView(View):
+    def post(self, request, *args,**kwargs):
+        # se recupera el usuario
+        usuario = self.request.user
+        # se recupera la entrada o pk
+        post = Posts.objects.get(id=self.kwargs['pk'])
+        # se registra el objeto favorito
+        Favorites.objects.create(
+            user=usuario,
+            post=post,
+        )
+        
+        return HttpResponseRedirect(reverse('Users_app:user-profile'))

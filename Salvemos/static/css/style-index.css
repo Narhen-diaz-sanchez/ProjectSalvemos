@@ -5,7 +5,7 @@
     --color1: rgb(1, 147, 124);
     --color2: rgb(146, 167, 54);
     --color3: rgb(187, 220, 47);
-    --fondo: rgb(230, 245, 199);
+    --fondo: #f2f2f2;
     --titulos: 3rem;
     --subtitulos: 1.5rem;
     --margenes: 60px;
@@ -360,7 +360,19 @@ nav .enlaces a:hover {
 
 .textos-work h4 {
     list-style: 30px;
-    font-weight: 300;
+    font-weight: bold;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.textos-work-link{
+    text-decoration: none;
+    list-style: 30px;
+    font-weight: bold;
+    color: black;
 }
 
 /* footer */

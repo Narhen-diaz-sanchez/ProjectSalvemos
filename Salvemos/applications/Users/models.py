@@ -71,4 +71,4 @@ class Favorites(TimeStampedModel):
         verbose_name_plural = 'Posts Favoritos'
 
     def __str__(self):
-        return self.entry.title
+        return self.post.title

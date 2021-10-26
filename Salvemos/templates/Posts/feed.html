@@ -15,22 +15,23 @@ Mascotas
 {% include 'includes/header_posts.html' %}
 <section class="feed container">
     <div class="buscador">
+        <form method="get">{% csrf_token %}
+            <div class="busc">
+                <input type="text" name="kword" id="kword" class="barrabuscar" placeholder="Busca un post">
+                <button type="submit" class="cta cta2">Buscar</button>
+            </div>
 
-        <form method="get" enctype="">{% csrf_token %}
-            <input type="text" name="kword" id="kword" placeholder="Busca un post">
-            <button type="submit" class="cta cta2">Buscar</button>
-        <div class="buscador">
-        <h2>Filtra por categoria</h2>
-        {% for categoria in categorias %}
-            <a class href="?categoria={{categoria.name}}">{{categoria.name}}</a>
-            {% endfor %}
+            <div class="buscador">
+                <h2>Filtra por categoria</h2>
+                {% for categoria in categorias %}
+                <a class="categoria" href="?categoria={{categoria.name}}">{{categoria.name}} | </a>
+                {% endfor %}
         </form>
-        </div>
+    </div>
 
     </div>
 
     <div class="feed__grid">
-
         {% for post in Posts %}
         <div class="feed__item">
             <div class="feed__figure">

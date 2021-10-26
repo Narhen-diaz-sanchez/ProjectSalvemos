@@ -118,36 +118,44 @@
             <div class="galeria-work">
 
                 {% for post in post_adoptar %}
+
                 <div class="cont-work adoptar">
-                    <div class="img-work">
-                        <img src="{{ post.image.url }}" alt="" width=30%>
-                    </div>
-                    <div class="textos-work">
-                        <h4><a href="{% url 'Posts_app:Post-detail' post.id %}">{{post.resume}}</a></h4>
-                    </div>
+                    <a class="textos-work-link" href="{% url 'Posts_app:Post-detail' post.id %}">
+                        <div class="img-work">
+                            <img src="{{ post.image.url }}" alt="" width=30%>
+                        </div>
+                        <div class="textos-work">
+                            <h4 class="title">{{post.title}}</h4>
+                        </div>
+                    </a>
                 </div>
+
                 {% endfor %}
 
                 {% for post in post_apadrinar %}
-                <div class="cont-work apadrinar">
-                    <div class="img-work">
-                        <img src="{{ post.image.url }}" alt="" width=30%>
-                    </div>
-                    <div class="textos-work">
-                        <h4><a href="{% url 'Posts_app:Post-detail' post.id %}">{{post.resume}}</a></h4>
-                    </div>
+                <div class="cont-work adoptar">
+                    <a class="textos-work-link" href="{% url 'Posts_app:Post-detail' post.id %}">
+                        <div class="img-work">
+                            <img src="{{ post.image.url }}" alt="" width=30%>
+                        </div>
+                        <div class="textos-work">
+                            <h4 class="title">{{post.title}}</h4>
+                        </div>
+                    </a>
                 </div>
                 {% endfor %}
 
 
                 {% for post in post_donar %}
-                <div class="cont-work donar">
-                    <div class="img-work">
-                        <img src="{{ post.image.url }}" alt="" width=30%>
-                    </div>
-                    <div class="textos-work">
-                        <h4><a href="{% url 'Posts_app:Post-detail' post.id %}">{{post.resume}}</a></h4>
-                    </div>
+                <div class="cont-work adoptar">
+                    <a class="textos-work-link" href="{% url 'Posts_app:Post-detail' post.id %}">
+                        <div class="img-work">
+                            <img src="{{ post.image.url }}" alt="" width=30%>
+                        </div>
+                        <div class="textos-work">
+                            <h4 class="title">{{post.title}}</h4>
+                        </div>
+                    </a>    
                 </div>
                 {% endfor %}
 
@@ -155,7 +163,7 @@
         </section>
     </main>
     {% include 'includes/footer.html' %}
-    
+
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/filtro.js' %}"></script>

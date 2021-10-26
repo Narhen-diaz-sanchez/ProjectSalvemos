@@ -24,7 +24,10 @@ Nuevo Post
         <figure class="detail__picture">
             <img src="{{object.image.url}}" alt="" class="detail__img">
         </figure>
-        <a href="#" class="cta">Agregar a favoritos</a>
+        <form action="{% url 'Users_app:addfavorito' posts.id %}" method="post">{% csrf_token %}
+            <button type="submit" class="cta">Agregar a favoritos</button>
+        </form>
+        
     </div>
 
 </section>

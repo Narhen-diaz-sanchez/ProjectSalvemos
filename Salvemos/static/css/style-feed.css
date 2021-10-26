@@ -160,13 +160,40 @@ nav .enlaces a:hover {
   background: rgb(17, 128, 126);
 }
 
-.buscador{
+.buscador {
   display: inline-block;
-  width:400px; 
+  width: 500px;
 }
 
-.cta2{
-  margin-left: 30px;
+.busc {
+  display: grid;
+  grid-template-columns: repeat (10, 1fr );
+  grid-template-rows: 1fr;
+  column-gap:1px;
+}
+
+.barrabuscar {
+  padding: 15px 10px;
+  width: 100%;
+  outline: none;
+  border: 1px solid #000;
+  border-radius: 2px;
+  grid-column: 1/6;
+}
+
+.barrabuscar:focus {
+  box-shadow: 0 2px 10px -4px rgba(0, 0, 0, .5);
+  transition: .4s;
+}
+
+.cta2 {
+  margin: 0;
+  grid-column: 7/10;
+}
+
+.categoria {
+  text-decoration: none;
+  font-size: 1.3rem;
 }
 
 /* paginacion */
@@ -229,6 +256,7 @@ ul.pagination li a:hover:not(.active) {
   color: #fff;
   cursor: pointer;
 }
+
 .contenedor {
   margin: auto;
   padding: var(--margenes) 0;

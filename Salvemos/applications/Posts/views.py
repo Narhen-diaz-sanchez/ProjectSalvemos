@@ -1,13 +1,16 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls.base import reverse_lazy
+from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy, reverse
 from django.views.generic import (
     ListView,
     DetailView,
+    View,
 )
 from django.views.generic.edit import FormView
 from .models import Posts, Category
 from .forms import *
+
 # Create your views here.
 
 
@@ -60,3 +63,6 @@ class NewPost(LoginRequiredMixin, FormView):
             public=True,
         )
         return super(NewPost, self).form_valid(form)
+    
+
+

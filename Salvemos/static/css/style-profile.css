@@ -151,6 +151,141 @@ nav .enlaces a:hover {
     color: white;
 }
 
+/* seccion del perfil */
+.container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    padding-top: 100px;
+    align-content: space-between;
+    align-items: start;
+    justify-items: center;
+    overflow: hidden;
+}
+
+.perfil {
+    grid-column: 1/-6;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+}
+
+.titlefavorite {
+    margin-top: 35px;
+    grid-column: 4/-1;
+    grid-row: 1/-1;
+    place-self: center;
+    width: 70%;
+    box-shadow: 20px -20px 0px 0px rgb(0, 161, 157);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.containerfavoritos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.favoritos {
+    place-self: center;
+}
+
+.card {
+    width: 400px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: -20px -20px 0px 0px rgb(0, 161, 157);
+    border-radius: 10px;
+}
+
+.card_title {
+    border-bottom: 3px solid steelblue;
+    padding-bottom: 7px;
+    margin-bottom: 10px;
+}
+
+.card_text {
+    padding-top: 10px;
+}
+
+.text {
+    padding-top: 30px;
+    margin-bottom: 10px
+}
+
+.cta {
+    display: inline-block;
+    background: rgb(0, 161, 157);
+    padding: 10px 30px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 10px;
+    justify-self: center;
+    margin-bottom: 1em;
+}
+
+.cta_card {
+    padding: 5px 15px;
+    margin: 0;
+}
+
+.cta_eliminar {
+    background: crimson;
+}
+
+.feed__item {
+    background: #f2f2f2;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 210px;
+    height: 300px;
+
+}
+
+.feed__figure {
+    width: 100%;
+}
+
+.feed__img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px 10px 0 0;
+    display: block;
+    margin: 0 auto;
+    background-position: center;
+    background: local;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.feed__texts {
+    margin: 0;
+    padding-left: 20px;
+    text-align: center;
+}
+
+.feed__title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.feed__paragraph {
+    margin: 0;
+    overflow: hidden;
+    max-height: 120px;
+}
+
 /* footer */
 .footer__icon {
     display: inline-block;
@@ -271,4 +406,3 @@ footer {
         font-size: 1rem;
     }
 }
-
