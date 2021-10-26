@@ -132,3 +132,39 @@ class UpdatePasswordForm(forms.Form):
             }
         )
     )
+    
+    
+class VerificationForm(forms.Form):
+    codregistro = forms.CharField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Ingresa tu código de verificación',
+                'class': 'input__login',
+            }
+        )
+        )
+    
+    # se sobreescribre __init__ para recuperar los 
+    # kwargs adicionales enviados desde las views
+    def __init__(self, pk, *args, **kwargs):
+        self.id_user = pk
+        super(VerificationForm, self).__init__(*args, **kwargs)
+    
+    
+    def clean_codregistro(self):
+        """Esta función valida que el códig de registro le pertenezca al usuario
+        llamando al manager cod_validation que devuelve True si es valido"""
+        # se recupera el código para realizar la validación
+        codigo = self.cleaned_data['codregistro']
+        
+        if len(codigo) == 6:
+            #verificamos si el codigo y el id de usuario son validos
+            activo = User.objects.cod_validation(
+                self.id_user,
+                codigo
+            )
+            if not activo:
+                raise forms.ValidationError('El código es incorrecto')
+        else:
+            raise forms.ValidationError('El código es incorrecto')

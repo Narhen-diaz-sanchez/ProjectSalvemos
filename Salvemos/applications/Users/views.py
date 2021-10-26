@@ -5,10 +5,12 @@ from django.urls import reverse_lazy, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
+from .functions import *
 
 from django.views.generic import (
     View,
-    ListView
+    ListView,
+    DeleteView
 )
 
 from django.views.generic.edit import (
@@ -19,6 +21,7 @@ from .forms import (
     UserRegisterForm,
     LoginForm,
     UpdatePasswordForm,
+    VerificationForm,
 )
 #
 from .models import User, Favorites
@@ -32,8 +35,10 @@ class UserRegisterView(FormView):
     success_url = reverse_lazy('Users_app:user-login')
 
     def form_valid(self, form):
-        #
-        User.objects.create_user(
+        # Se crea el código de verificación
+        codigo = code_generator()
+
+        usuario = User.objects.create_user(
             form.cleaned_data['email'],
             form.cleaned_data['password1'],
             name=form.cleaned_data['name'],
@@ -41,9 +46,21 @@ class UserRegisterView(FormView):
             is_foundation=form.cleaned_data['is_foundation'],
             genero=form.cleaned_data['genero'],
             date_birth=form.cleaned_data['date_birth'],
+            codregistro=codigo,
         )
-        # enviar el codigo al email del user
-        return super(UserRegisterView, self).form_valid(form)
+        # Enviar email al usuario
+        asunto = 'Email de confirmación'
+        message = 'Tu código de registro para salvemos ' + codigo
+        from_email = 'lermasama@gmail.com'
+        send_mail(asunto, message, from_email, [form.cleaned_data['email'], ])
+        # Una vez confirmado redirigir a pantalla de confirmación
+
+        return HttpResponseRedirect(
+            reverse(
+                'Users_app:user-verification',
+                kwargs={'pk': usuario.id}
+            )
+        )
 
 
 class LoginUser(FormView):
@@ -70,7 +87,9 @@ class LogoutView(View):
             )
         )
 
-#TODO falta hacer la vista para actualizar la contraseña
+# TODO falta hacer la vista para actualizar la contraseña
+
+
 class UpdatePasswordView(LoginRequiredMixin, FormView):
     template_name = 'users/update.html'
     form_class = UpdatePasswordForm
@@ -97,12 +116,13 @@ class UserPageListView(LoginRequiredMixin, ListView):
     template_name = "Users/profile.html"
     context_object_name = 'profileuser'
     login_url = reverse_lazy('Users_app:user-login')
-    
+
     def get_queryset(self):
         return Favorites.objects.posts_user(self.request.user)
 
+
 class addfavoritosView(View):
-    def post(self, request, *args,**kwargs):
+    def post(self, request, *args, **kwargs):
         # se recupera el usuario
         usuario = self.request.user
         # se recupera la entrada o pk
@@ -112,5 +132,33 @@ class addfavoritosView(View):
             user=usuario,
             post=post,
         )
-        
+
         return HttpResponseRedirect(reverse('Users_app:user-profile'))
+
+
+class FavoritosDeleteView(DeleteView):
+    model = Favorites
+    success_url = reverse_lazy('Users_app:user-profile')
+
+
+class CodVerificationView(FormView):
+    template_name = 'Users/verification.html'
+    form_class = VerificationForm
+    success_url = reverse_lazy('Users_app:user-login')
+
+    # Se sobreescribe get_form_kwargs para que envíe nuevos kwargs al 
+    # formulario y poder recuperar el id de la url
+    def get_form_kwargs(self):
+        kwargs = super(CodVerificationView, self).get_form_kwargs()
+        kwargs.update({
+            'pk': self.kwargs['pk']
+        })
+        return kwargs
+
+    def form_valid(self, form):
+        User.objects.filter(
+            id=self.kwargs['pk']
+        ).update(
+            is_active=True
+        )
+        return super(CodVerificationView, self).form_valid(form)

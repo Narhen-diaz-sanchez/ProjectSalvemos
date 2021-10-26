@@ -38,6 +38,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     #
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
+    codregistro = models.CharField(max_length=6, default='000000')
 
     USERNAME_FIELD = 'email'
 

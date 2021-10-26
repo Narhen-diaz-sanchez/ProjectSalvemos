@@ -235,8 +235,17 @@ nav .enlaces a:hover {
     margin: 0;
 }
 
+.cta_card:hover{
+    background: rgb(4, 117, 115);
+    color: #fff;
+}
+
 .cta_eliminar {
     background: crimson;
+}
+
+.cta_eliminar:hover {
+    background: rgb(163, 5, 37);
 }
 
 .feed__item {

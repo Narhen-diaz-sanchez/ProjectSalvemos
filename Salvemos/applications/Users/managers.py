@@ -16,12 +16,21 @@ class UserManager(BaseUserManager, models.Manager):
         user.set_password(password)
         user.save(using=self.db)
         return user
-
+    
     def create_user(self, email, password=None, **extra_fields):
+        """Crea los ususario de la página"""
         return self._create_user(email, password, False, False, False, **extra_fields)
-
+    
     def create_superuser(self, email, password=None, **extra_fields):
+        """Crea los superusuarios"""
         return self._create_user(email, password, True, True, True, **extra_fields)
+    
+    def cod_validation(self, id_user, cod_registro):
+        """Metodo para validar el código de confirmación del correo"""
+        if self.filter(id=id_user, codregistro=cod_registro).exists():
+            return True
+        else:
+            return False
 
 class FavoritesManager(models.Manager):
     def posts_user(self, usuario):

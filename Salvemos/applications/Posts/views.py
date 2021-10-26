@@ -55,7 +55,6 @@ class NewPost(LoginRequiredMixin, FormView):
         Posts.objects.create(
             user=usuario,
             category=form.cleaned_data['category'],
-            #tag=tag,
             title=form.cleaned_data['title'],
             resume=form.cleaned_data['resume'],
             content=form.cleaned_data['content'],

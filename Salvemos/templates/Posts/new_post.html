@@ -23,7 +23,11 @@ Nuevo Post
 
     <form class="newpost__form" method="post" enctype="multipart/form-data">{% csrf_token %}
         <h2 class="newpost__title title">Nuevo post</h2>
-        {{form.as_p}}
+        <h4>Nombre de la mascota</h4>{{form.title}}
+        <h4>Qué piensas hacer con tu peludo</h4>{{form.category}}
+        <h4>Danos un breve resumen</h4>{{form.resume}}
+        <h4>Sube una imagen de la mascota</h4>{{form.image}}
+        <h4>Ahora cuentanos todo acerca de la mascota</h4>{{form.content}}
         {{form.media}}
         <div class="newpost__btn">
             <button type="submit" class="newpost__cta">Publicar</button>

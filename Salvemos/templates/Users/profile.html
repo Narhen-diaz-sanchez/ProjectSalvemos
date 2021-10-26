@@ -26,7 +26,7 @@ Nuevo Post
     <div class="titlefavorite">
         <h2 class="card_title">Mis favoritos</h2>
         <div class="containerfavoritos">
-            
+
             {% for favorito in profileuser %}
             <div class="feed__item">
                 <div class="feed__figure">
@@ -35,17 +35,19 @@ Nuevo Post
                 <div class="feed__texts">
                     <h2 class="feed__title">{{favorito.post.title}}</h2>
                     <p class="feed__paragraph">{{favorito.post.resume}}</p>
-                    <a href="#" class="cta cta_card">Ver</a>
-                    <a href="#" class="cta cta_card cta_eliminar">Eliminar</a>
+                    <form action="{% url 'Users_app:deletefavorito' favorito.id %}" method="post">{% csrf_token %}
+                        <a href="{% url 'Posts_app:Post-detail' favorito.post.slug %}" class="cta cta_card">Ver</a>
+                        <button type="submit" class="cta cta_card cta_eliminar">Eliminar</button>
+                    </form>
                 </div>
             </div>
             {%empty%}
             <h3>No tienes favoritos</h3>
             {% endfor %}
-                
+
         </div>
     </div>
-    
+
 
 </section>
 

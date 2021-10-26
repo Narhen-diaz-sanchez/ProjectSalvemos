@@ -12,6 +12,11 @@ urlpatterns = [
         name='user-register',
     ),
     path(
+        'verification/<pk>/',
+        views.CodVerificationView.as_view(),
+        name='user-verification',
+    ),
+    path(
         'login/',
         views.LoginUser.as_view(),
         name='user-login',
@@ -35,5 +40,10 @@ urlpatterns = [
         'addfavorito/<pk>/',
         views.addfavoritosView.as_view(),
         name='addfavorito',
+    ),
+    path(
+        'deletefavorito/<pk>/',
+        views.FavoritosDeleteView.as_view(),
+        name='deletefavorito',
     ),
 ]
