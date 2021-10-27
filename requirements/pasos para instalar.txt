@@ -1,4 +1,12 @@
-1. Tener instalado python, abrir la terminal en la carpeta donde se va a realizar el proyecto, y ejecutar "py -m venv "nombre del entorno virtual"", luego se crea la carpeta con el entorno virtual
+Rquisitos
+
+Tener instalado Python versión 3.9.7, PostgreSQL versión 13 en adelante, Git, tener actualizado Miscrosoft c++ redistributable, Miscrosoft c++ Build Tools y el editor de código de su preferencia.
+
+Pasos
+
+1. crear una carpeta donde se guardará el pryecto, abrir git bash en la carpeta y ejecutar el comando "git clone https://github.com/Narhen-diaz-sanchez/ProjectSalvemos.git" 
+
+1.abrir la terminal en la carpeta donde se va a realizar el proyecto, y ejecutar "py -m venv "nombre del entorno virtual"", luego se crea la carpeta con el entorno virtual
 
 2.En cmd entrar a la carpeta del entorno virtual luego a la carpeta scripts y ejecutar el comando "activate" para activar el entorno virtual.
 

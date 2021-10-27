@@ -16,7 +16,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     GENDER_CHOICES = (
         ('M', 'Masculino'),
         ('F', 'Femenino'),
-        ('A', 'Soy una Fundación'),
         ('O', 'Otros'),
     )
 
