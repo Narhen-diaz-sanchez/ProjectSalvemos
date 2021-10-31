@@ -1,11 +1,8 @@
-from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
     DetailView,
-    View,
 )
 from django.views.generic.edit import FormView
 from .models import Posts, Category
@@ -21,30 +18,30 @@ class PostsListView(LoginRequiredMixin, ListView):
     paginate_by = 8
     ordering = 'title'
     login_url = reverse_lazy('Users_app:user-login')
-    
+
     def get_context_data(self, **kwargs):
         context = super(PostsListView, self).get_context_data(**kwargs)
-        context["categorias"]= Category.objects.all()
+        context["categorias"] = Category.objects.all()
         return context
-    
-    
+
     def get_queryset(self):
-        kword = self.request.GET.get("kword",'')
-        categoria = self.request.GET.get("categoria",'')
-        
+        kword = self.request.GET.get("kword", '')
+        categoria = self.request.GET.get("categoria", '')
+
         # COnsulta de busqueda
         resultado = Posts.objects.buscar_Post(kword, categoria)
         return resultado
 
 
-
 class PostsDetailView(LoginRequiredMixin, DetailView):
+    """Vista para el detalle de una publicación"""
     model = Posts
     template_name = "Posts/post_detail.html"
     login_url = reverse_lazy('Users_app:user-login')
 
 
 class NewPost(LoginRequiredMixin, FormView):
+    """Vista para realizar una nueva publicación"""
     template_name = 'Posts/new_post.html'
     form_class = NewPostForm
     success_url = reverse_lazy('Posts_app:Posts-lista')
@@ -62,6 +59,3 @@ class NewPost(LoginRequiredMixin, FormView):
             public=True,
         )
         return super(NewPost, self).form_valid(form)
-    
-
-

@@ -1,4 +1,4 @@
-#
+"""Urls de la aplicación Home"""
 from django.urls import path
 
 from . import views

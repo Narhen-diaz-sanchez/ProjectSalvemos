@@ -1,5 +1,5 @@
+""""Vistas de la aplicación Users"""
 # Imports Django
-from django.shortcuts import render
 from django.core.mail import send_mail
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth import authenticate, login, logout
@@ -30,6 +30,7 @@ from applications.Posts.models import Posts
 
 
 class UserRegisterView(FormView):
+    """Vista para registrar un usuario"""
     template_name = 'Users/signup.html'
     form_class = UserRegisterForm
     success_url = reverse_lazy('Users_app:user-login')
@@ -64,6 +65,7 @@ class UserRegisterView(FormView):
 
 
 class LoginUser(FormView):
+    """"Vista para iniciar sesión"""
     template_name = 'Users/login.html'
     form_class = LoginForm
     success_url = reverse_lazy('Posts_app:Posts-lista')
@@ -78,6 +80,7 @@ class LoginUser(FormView):
 
 
 class LogoutView(View):
+    """Vista para cerrar sesión"""
 
     def get(self, request, *args, **kargs):
         logout(request)
@@ -87,11 +90,10 @@ class LogoutView(View):
             )
         )
 
-# TODO falta hacer la vista para actualizar la contraseña
-
 
 class UpdatePasswordView(LoginRequiredMixin, FormView):
-    template_name = 'users/update.html'
+    """Vista para actualizar la contraseña"""
+    template_name = 'users/update_password.html'
     form_class = UpdatePasswordForm
     success_url = reverse_lazy('Users_app:user-login')
     login_url = reverse_lazy('Users_app:user-login')
@@ -113,6 +115,7 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
 
 
 class UserPageListView(LoginRequiredMixin, ListView):
+    """Vista mostrar la cuenta de un usuario"""
     template_name = "Users/profile.html"
     context_object_name = 'profileuser'
     login_url = reverse_lazy('Users_app:user-login')
@@ -122,6 +125,8 @@ class UserPageListView(LoginRequiredMixin, ListView):
 
 
 class addfavoritosView(View):
+    """Vista para añadir un favorito"""
+
     def post(self, request, *args, **kwargs):
         # se recupera el usuario
         usuario = self.request.user
@@ -137,16 +142,18 @@ class addfavoritosView(View):
 
 
 class FavoritosDeleteView(DeleteView):
+    """Vista para eliminar un favorito"""
     model = Favorites
     success_url = reverse_lazy('Users_app:user-profile')
 
 
 class CodVerificationView(FormView):
+    """Vista para ingresar el código de verificación"""
     template_name = 'Users/verification.html'
     form_class = VerificationForm
     success_url = reverse_lazy('Users_app:user-login')
 
-    # Se sobreescribe get_form_kwargs para que envíe nuevos kwargs al 
+    # Se sobreescribe get_form_kwargs para que envíe nuevos kwargs al
     # formulario y poder recuperar el id de la url
     def get_form_kwargs(self):
         kwargs = super(CodVerificationView, self).get_form_kwargs()

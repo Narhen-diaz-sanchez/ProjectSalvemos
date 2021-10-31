@@ -4,6 +4,7 @@ from .models import Contact
 
 
 class ContactForm(forms.ModelForm):
+    """Formulario para la vista de contacto"""
     class Meta:
         model = Contact
         fields = (

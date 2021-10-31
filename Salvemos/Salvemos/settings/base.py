@@ -26,6 +26,7 @@ BASE_DIR = Path(__file__).ancestor(3)
 with open("secret.json") as f:
     secret = json.loads(f.read())
 
+
 def get_secret(secret_name, secrets=secret):
     try:
         return secrets[secret_name]
@@ -93,10 +94,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Salvemos.wsgi.application'
 
 
-
-
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -130,8 +127,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
 
 
 # Default primary key field type

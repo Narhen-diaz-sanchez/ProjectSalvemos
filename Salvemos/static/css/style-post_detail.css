@@ -99,8 +99,8 @@ nav .enlaces a:hover {
   margin-left: 1em;
 }
 
-.detail__aside{
-    text-align: center;
+.detail__aside {
+  text-align: center;
 }
 
 .detail__main {
@@ -119,7 +119,7 @@ nav .enlaces a:hover {
 }
 
 .detail__picture {
-align-items: center;
+  align-items: center;
   flex: 1;
 }
 
@@ -137,9 +137,10 @@ align-items: center;
   font-weight: bold;
   margin-bottom: 40px;
 }
-.detail__paragraph{
-    margin-bottom: 20px;
-    /* font-size: 2rem; */
+
+.detail__paragraph {
+  margin-bottom: 20px;
+  /* font-size: 2rem; */
 }
 
 .cta {
@@ -184,7 +185,7 @@ align-items: center;
 
   .detail__title {
     font-size: 2.5rem;
-    
+
   }
 
   .detail__paragraph {
@@ -215,6 +216,7 @@ align-items: center;
   color: #fff;
   cursor: pointer;
 }
+
 .contenedor {
   margin: auto;
   padding: var(--margenes) 0;
@@ -279,4 +281,3 @@ footer {
 .footer__copy {
   text-shadow: var(--txt-shadow);
 }
-

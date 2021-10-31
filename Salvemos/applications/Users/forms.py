@@ -5,9 +5,8 @@ from .models import User
 
 
 class UserRegisterForm(forms.ModelForm):
-
+    """Formulario para registrar un usuario"""
     password1 = forms.CharField(
-        #label='Contraseña',
         required=True,
         widget=forms.PasswordInput(
             attrs={
@@ -17,13 +16,12 @@ class UserRegisterForm(forms.ModelForm):
         )
     )
     password2 = forms.CharField(
-        #label='Contraseña',
         required=True,
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': 'Escribe nuevamente la contraseña',
                 'class': 'input__login',
-            }   
+            }
         )
     )
 
@@ -72,15 +70,17 @@ class UserRegisterForm(forms.ModelForm):
             'is_foundation': forms.CheckboxInput(
             ),
         }
-    #Valida si las contraseñas son iguales
+    # Valida si las contraseñas son iguales
+
     def clean_password2(self):
         if self.cleaned_data['password1'] != self.cleaned_data['password2']:
             self.add_error('password2', 'Las contraseñas no son iguales')
 
 
 class LoginForm(forms.Form):
+    """Formulario para iniciar sesión"""
     email = forms.CharField(
-        #label='E-mail',
+        # label='E-mail',
         required=True,
         widget=forms.TextInput(
             attrs={
@@ -90,7 +90,7 @@ class LoginForm(forms.Form):
         )
     )
     password = forms.CharField(
-        #label='Contraseña',
+        # label='Contraseña',
         required=True,
         widget=forms.PasswordInput(
             attrs={
@@ -113,13 +113,14 @@ class LoginForm(forms.Form):
 
 
 class UpdatePasswordForm(forms.Form):
-
+    """Formulario para actualizar la contraseña"""
     password1 = forms.CharField(
         label='Contraseña',
         required=True,
         widget=forms.PasswordInput(
             attrs={
-                'placeholder': 'Contraseña Actual'
+                'placeholder': 'Contraseña Actual',
+                'class': 'input__login',
             }
         )
     )
@@ -128,13 +129,15 @@ class UpdatePasswordForm(forms.Form):
         required=True,
         widget=forms.PasswordInput(
             attrs={
-                'placeholder': 'Contraseña Nueva'
+                'placeholder': 'Contraseña Nueva',
+                'class': 'input__login',
             }
         )
     )
-    
-    
+
+
 class VerificationForm(forms.Form):
+    """Formulario para la validar el código de verificación"""
     codregistro = forms.CharField(
         required=True,
         widget=forms.TextInput(
@@ -143,23 +146,22 @@ class VerificationForm(forms.Form):
                 'class': 'input__login',
             }
         )
-        )
-    
-    # se sobreescribre __init__ para recuperar los 
+    )
+
+    # se sobreescribre __init__ para recuperar los
     # kwargs adicionales enviados desde las views
     def __init__(self, pk, *args, **kwargs):
         self.id_user = pk
         super(VerificationForm, self).__init__(*args, **kwargs)
-    
-    
+
     def clean_codregistro(self):
         """Esta función valida que el códig de registro le pertenezca al usuario
         llamando al manager cod_validation que devuelve True si es valido"""
         # se recupera el código para realizar la validación
         codigo = self.cleaned_data['codregistro']
-        
+
         if len(codigo) == 6:
-            #verificamos si el codigo y el id de usuario son validos
+            # verificamos si el codigo y el id de usuario son validos
             activo = User.objects.cod_validation(
                 self.id_user,
                 codigo

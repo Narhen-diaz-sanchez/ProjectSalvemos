@@ -10,14 +10,14 @@ class PostsManager(models.Manager):
             public=True,
             category='1',
         ).order_by('-created')[:3]
-        
+
     def Post_en_portada_apadrinar(self):
         """Devuelve los ultimos tres posts de categoria apadrinar"""
         return self.filter(
             public=True,
             category='2',
         ).order_by('-created')[:3]
-        
+
     def Post_en_portada_donar(self):
         """Devuelve los ultimos tres posts de categoria donar"""
         return self.filter(
@@ -26,7 +26,7 @@ class PostsManager(models.Manager):
         ).order_by('-created')[:3]
 
     def buscar_Post(self, kword, categoria):
-        # Procedimiento para buscar Posts por palabra clave o categoría
+        """Procedimiento para buscar Posts por palabra clave o categoría"""
         if len(categoria) > 0:
             return self.filter(
                 category__name=categoria,
@@ -34,7 +34,7 @@ class PostsManager(models.Manager):
                 public=True,
             ).order_by('-created')
         else:
-            return self.filter( 
+            return self.filter(
                 title__icontains=kword,
                 public=True,
             ).order_by('-created')

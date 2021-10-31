@@ -15,20 +15,20 @@
     <section class="contact">
         <form class="contact__form" method="post" enctype="multipart/form-data">{% csrf_token %}
             <h2 class="contact__title">Contáctanos</h2>
-            
+
             {{form.as_p}}
             <div class="button">
                 <button type="submit" class="contact__cta">Enviar</button>
-                
+
                 {% if not user.is_anonymous %}
                 <a href="{% url 'Posts_app:Posts-lista' %}">Inicio</a>
                 {% else %}
                 <a href="{% url 'Home_app:index' %}">Inicio</a>
                 {% endif %}
-                    
-                
+
+
             </div>
-            
+
         </form>
 
     </section>

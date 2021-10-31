@@ -12,7 +12,7 @@ from applications.Posts.models import Posts
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-
+    """Modelo para la creación de un usuario"""
     GENDER_CHOICES = (
         ('M', 'Masculino'),
         ('F', 'Femenino'),
@@ -53,6 +53,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Favorites(TimeStampedModel):
+    """Modelo para los favoritos de un usuario"""
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name='user_favorites',

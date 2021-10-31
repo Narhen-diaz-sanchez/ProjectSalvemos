@@ -20,7 +20,7 @@ Nuevo Post
             <h2 class="card_title">{{user.name}} {{user.last_name}}</h2>
             <h3 class="card_text">{{user.email}}</h3>
             <h3 class="card_text">{{user.date_birth}}</h3>
-            <a href="#" class="cta">Cambiar contraseña</a>
+            <a href="{% url 'Users_app:user-update' %}" class="cta">Cambiar contraseña</a>
         </div>
     </div>
     <div class="titlefavorite">
